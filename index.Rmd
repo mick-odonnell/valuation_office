@@ -1,0 +1,181 @@
+---
+title: "Valuation Office Open Data"
+author: "Mick O Donnell"
+date: "5/9/2021"
+output: html_document
+---
+
+# Introduction
+
+Downloading and gathering...
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = FALSE, warning = FALSE, message = FALSE, cache = TRUE)
+library(tidyverse)
+library(tidymodels)
+library(lubridate)
+library(magrittr)
+library(scales)
+```
+
+_Note - you will need to change the eval tag to TRUE for the next chunk to run - I deactivated it as it takes a couple of minutes, plus it's an unnecessary call on the API as we have the data saved locally_
+
+```{r download, eval = FALSE}
+# download the data - it is only possible to pull down one local authority's data at a time, so a vector of local authority names is necessary.. I've had to correct dlrcc's name manually
+
+la_names <- read_csv("data/Administrative_Areas_-_OSi_National_Statutory_Boundaries_-_Generalised_20m.csv") %>%   select(ENGLISH) %>%
+  mutate(ENGLISH = ifelse(ENGLISH == "DUN LAOGHAIRE-RATHDOWN COUNTY COUNCIL", 
+                          "DUN LAOGHAIRE RATHDOWN CO CO", ENGLISH)) %>% 
+  mutate(la = str_replace_all(ENGLISH, " ", "%20"))
+
+valoff_query_api_str <- "https://api.valoff.ie/api/Property/GetProperties?Fields=*&LocalAuthority=la_string&CategorySelected=OFFICE%2CFUEL%2FDEPOT%2CLEISURE%2CINDUSTRIAL%20USES%2CHEALTH%2CHOSPITALITY%2CMINERALS%2CMISCELLANEOUS%2CRETAIL%20(SHOPS)%2CUTILITY%2CRETAIL%20(WAREHOUSE)%2CNO%20CATEGORY%20SELECTED%2CCENTRAL%20VALUATION%20LIST%2CCHECK%20CATEGORY%2CNON-LIST%2CNON-LIST%20EXEMPT&Format=csv&Download=true"
+
+parsed_queries <- character(length = 31)
+i = 1
+for (i in 1:length(la_names$la)) {
+  parsed_queries[[i]] <-  str_replace(valoff_query_api_str, 'la_string', la_names$la[[i]])
+}
+
+# I have used a list of all Irish Local Authorities, but some of these don't appear in the data, meaning there are empty dataframes
+
+
+valoff_df_list <- parsed_queries %>% 
+  map(safely(read_csv))
+
+# filter for the error results
+x <- transpose(valoff_df_list)
+is_ok <- x$error %>%  map_lgl(is_null)
+
+valid_valoff_df <- x$result[is_ok]
+
+# we also need to define the column types in order to join all the tables
+cols = c("d", "c", "c", "c", "d", "c", "c", "c", "c", "c", "c", "c", "d", "d", "d", "c", "c", "d", "d", "d")
+
+valid_valoff_df %<>% 
+  map(mutate_if, is.numeric, as.character)
+
+# let's combine all these dataframes into one large dataframe for the country
+bind_rows(valid_valoff_df)-> ireland_valoff_records
+
+#write this out for future use
+ireland_valoff_records %>% write_csv("op/ireland_vo_records.csv")
+```
+
+# Inspection
+
+Some summary reports and some visualisations.
+
+```{r inspection, eval=TRUE}
+
+# lets read in the data to get some decent column types assigned
+ireland_valoff_records <- read_csv("op/ireland_vo_records.csv") %>% 
+mutate(`Property Number` = as.character(`Property Number`))
+```
+
+The dfSummary function is somewhat time intensive, so has been commented out for repeated runs of this script.
+
+```{r manage data}
+library(summarytools)
+
+# dfSummary(ireland_valoff_records) %>% view()
+
+head(ireland_valoff_records, 1000)
+
+theme_set(theme_light())
+
+ireland_valoff_records %>% 
+  ggplot() +
+  geom_bar(aes(County)) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = 'County',
+       y = 'Row Count',
+       title = 'Number of Rows',
+       subtitle = 'Dublin has most rows')
+```
+The above plot is not necessarily useful, as it shows the number of rows in the data, not the number of properties. We need to isolate the property records from the floor records. We will need to normalise on the Property Number field..
+
+```{r}
+property_records <- ireland_valoff_records  %>% 
+  group_by(`Property Number`, County, `Local Authority`, Valuation, Category, Uses, `Address 1`, `Address 2`, `Address 3`, `Address 4`, `Address 5`, `X ITM`, `Y ITM`) %>% 
+  summarise(total_area = sum(Area),
+         num_levels = n_distinct(Level),
+         min_level = min(Level),
+         max_level = max(Level))
+```
+
+The "Hospitality" category has had some information redacted for commercial purposes, so for the purposes of this analysis will be discarded.
+
+```{r remove-hosp-records}
+property_records %<>% filter(Category != "HOSPITALITY") %>% ungroup()
+ireland_valoff_records %<>% filter(Category != "HOSPITALITY")
+```
+
+I'm interested to see what influence Category and Total Area have on the Valuation. There is a sizeable proportion of records that have an area over 100,000 sq metres - let's isolate these for inspection... They seem to be primarily Fuel Depot or Industrial sites, with some utility sites also.
+
+The two largest sites are respectively 60 times and 9 times as large as the third largest. We will discard the top two by area for this analysis. we'll set the bar at 3 million square meters.
+
+```{r value-vs-size-category}
+# let's look at the distribution of total areas first
+property_records %>% 
+  mutate(total_area = abs(total_area)) %>% 
+  ggplot(aes(`Local Authority`, total_area)) +
+  geom_boxplot() +
+  scale_y_log10(labels = number_format()) + 
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = 'Local Authority',
+       y = 'Log Area (sq m)',
+       title = 'Distribution of Total Area')
+  
+property_records %>% 
+  filter(total_area > 1000000) %>% 
+  arrange(desc(total_area))
+
+property_records %>% 
+  ungroup() %>% 
+  filter(total_area > 1000000) %>% 
+  count(Category)
+
+property_records_lt_30m_sqm <- property_records  %>%
+  filter(!(is.na(total_area) | total_area > 3000000))
+
+property_records_lt_30m_sqm %>% 
+  mutate(total_area = abs(total_area),
+         Valuation = abs(Valuation)) %>%
+  filter(total_area > 0 & Valuation > 0) %>% 
+  ggplot() +
+  geom_point(aes(x = total_area, y = Valuation, color = Category), alpha = 0.1) +
+  scale_y_log10(labels = number_format()) +
+  scale_x_log10(labels = number_format())
+```
+
+## Export for Tableau
+
+First create a neat "floors" dataset - remove the common variables
+
+Second, make a subset of the uid, x and y coords to parse into a geojson file in WGS84. The dataset has coords in ITM95 which has a CRS of 2157. The _sf_ library is loaded and the _st_as_sf_ function is used to create the simeple features representation of the data. We then  reproject to WGS84 (crs 4326) and write it out as a geojson file.
+
+Third, make a neat property_records dataset.
+
+```{r export-for-tableau}
+# floors
+
+ireland_valoff_records %>% 
+  select(-c(2:15)) -> valoff_floors
+
+valoff_floors %>% write_csv("op/valoff_floors.csv")
+
+# spatial
+library(sf)
+
+property_records %>% 
+  select(`Property Number`, `X ITM`, `Y ITM`) %>%
+  filter(!(is.na(`X ITM`))) %>% 
+  st_as_sf(coords = c("X ITM", "Y ITM"), crs = 2157) %>% 
+  st_transform(4326) %>% 
+  st_write("op/property_locations.geojson")
+
+property_records %>% 
+  select(-c(`X ITM`, `Y ITM`)) %>% 
+  write_csv("op/properties.csv")
+```
+
