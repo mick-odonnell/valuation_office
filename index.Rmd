@@ -74,10 +74,10 @@ mutate(`Property Number` = as.character(`Property Number`))
 
 The dfSummary function is somewhat time intensive, so has been commented out for repeated runs of this script.
 
-```{r manage data}
+```{r manage-data}
 library(summarytools)
 
-# dfSummary(ireland_valoff_records) %>% view()
+#dfSummary(ireland_valoff_records) %>% view()
 
 head(ireland_valoff_records, 1000)
 
@@ -156,7 +156,7 @@ Second, make a subset of the uid, x and y coords to parse into a geojson file in
 
 Third, make a neat property_records dataset.
 
-```{r export-for-tableau}
+```{r export-for-tableau, eval=FALSE}
 # floors
 
 ireland_valoff_records %>% 

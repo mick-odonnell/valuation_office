@@ -1,0 +1,1536 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0420.1112                               -->
+<workbook source-build='2021.1.1 (20211.21.0420.1112)' source-platform='win' version='18.1' xml:base='https://public.tableau.com' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SpatialFileLayer />
+    <VizInTooltipHideWorksheet />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <repository-location id='ValuationOffice' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='property_locations.geojson+ (Multiple Connections)' inline='true' name='federated.0lod4mg0nu9d640zv38u80eloswi' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='property_locations' name='ogrdirect.08kpadr1dwt5de1dtiglj1lrjjvk'>
+            <connection class='ogrdirect' directory='C:/Tableau_Projects/valuation_office/op' filename='property_locations.geojson' password='' server='' tablename='' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='properties' name='textscan.09vfz9e1muwpg31gad9yj02j4sng'>
+            <connection class='textscan' directory='C:/Tableau_Projects/valuation_office/op' filename='properties.csv' password='' server='' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.09vfz9e1muwpg31gad9yj02j4sng' name='properties.csv' table='[properties#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_IE' separator=','>
+            <column datatype='string' name='Property Number' ordinal='0' />
+            <column datatype='string' name='County' ordinal='1' />
+            <column datatype='string' name='Local Authority' ordinal='2' />
+            <column datatype='integer' name='Valuation' ordinal='3' />
+            <column datatype='string' name='Category' ordinal='4' />
+            <column datatype='string' name='Uses' ordinal='5' />
+            <column datatype='string' name='Address 1' ordinal='6' />
+            <column datatype='string' name='Address 2' ordinal='7' />
+            <column datatype='string' name='Address 3' ordinal='8' />
+            <column datatype='string' name='Address 4' ordinal='9' />
+            <column datatype='string' name='Address 5' ordinal='10' />
+            <column datatype='real' name='total_area' ordinal='11' />
+            <column datatype='integer' name='num_levels' ordinal='12' />
+            <column datatype='integer' name='min_level' ordinal='13' />
+            <column datatype='string' name='max_level' ordinal='14' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation connection='ogrdirect.08kpadr1dwt5de1dtiglj1lrjjvk' name='property_locations.geojson' table='[property_locations.geojson]' type='table'>
+            <columns>
+              <column datatype='string' name='Property Number' ordinal='0' />
+              <column datatype='spatial' name='Geometry' ordinal='1' />
+            </columns>
+          </relation>
+          <relation connection='textscan.09vfz9e1muwpg31gad9yj02j4sng' name='properties.csv' table='[properties#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_IE' separator=','>
+              <column datatype='string' name='Property Number' ordinal='0' />
+              <column datatype='string' name='County' ordinal='1' />
+              <column datatype='string' name='Local Authority' ordinal='2' />
+              <column datatype='integer' name='Valuation' ordinal='3' />
+              <column datatype='string' name='Category' ordinal='4' />
+              <column datatype='string' name='Uses' ordinal='5' />
+              <column datatype='string' name='Address 1' ordinal='6' />
+              <column datatype='string' name='Address 2' ordinal='7' />
+              <column datatype='string' name='Address 3' ordinal='8' />
+              <column datatype='string' name='Address 4' ordinal='9' />
+              <column datatype='string' name='Address 5' ordinal='10' />
+              <column datatype='real' name='total_area' ordinal='11' />
+              <column datatype='integer' name='num_levels' ordinal='12' />
+              <column datatype='integer' name='min_level' ordinal='13' />
+              <column datatype='string' name='max_level' ordinal='14' />
+            </columns>
+          </relation>
+          <relation connection='textscan.09vfz9e1muwpg31gad9yj02j4sng' name='valoff_floors.csv' table='[valoff_floors#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_IE' separator=','>
+              <column datatype='string' name='Property Number' ordinal='0' />
+              <column datatype='integer' name='Level' ordinal='1' />
+              <column datatype='string' name='Floor Use' ordinal='2' />
+              <column datatype='real' name='Area' ordinal='3' />
+              <column datatype='real' name='Nav Per M2' ordinal='4' />
+              <column datatype='real' name='Nav' ordinal='5' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[Address 1]' value='[properties.csv].[Address 1]' />
+          <map key='[Address 2]' value='[properties.csv].[Address 2]' />
+          <map key='[Address 3]' value='[properties.csv].[Address 3]' />
+          <map key='[Address 4]' value='[properties.csv].[Address 4]' />
+          <map key='[Address 5]' value='[properties.csv].[Address 5]' />
+          <map key='[Area]' value='[valoff_floors.csv].[Area]' />
+          <map key='[Category]' value='[properties.csv].[Category]' />
+          <map key='[County]' value='[properties.csv].[County]' />
+          <map key='[Floor Use]' value='[valoff_floors.csv].[Floor Use]' />
+          <map key='[Geometry]' value='[property_locations.geojson].[Geometry]' />
+          <map key='[Level]' value='[valoff_floors.csv].[Level]' />
+          <map key='[Local Authority]' value='[properties.csv].[Local Authority]' />
+          <map key='[Nav Per M2]' value='[valoff_floors.csv].[Nav Per M2]' />
+          <map key='[Nav]' value='[valoff_floors.csv].[Nav]' />
+          <map key='[Property Number (properties.csv)]' value='[properties.csv].[Property Number]' />
+          <map key='[Property Number (valoff_floors.csv)]' value='[valoff_floors.csv].[Property Number]' />
+          <map key='[Property Number]' value='[property_locations.geojson].[Property Number]' />
+          <map key='[Uses]' value='[properties.csv].[Uses]' />
+          <map key='[Valuation]' value='[properties.csv].[Valuation]' />
+          <map key='[max_level]' value='[properties.csv].[max_level]' />
+          <map key='[min_level]' value='[properties.csv].[min_level]' />
+          <map key='[num_levels]' value='[properties.csv].[num_levels]' />
+          <map key='[total_area]' value='[properties.csv].[total_area]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IE&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_IE&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Property Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Property Number]</local-name>
+            <parent-name>[property_locations.geojson]</parent-name>
+            <remote-alias>Property Number</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[property_locations.geojson]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Property Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Property Number (properties.csv)]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Property Number</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>County</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[County]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>County</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Local Authority</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Local Authority]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Local Authority</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Valuation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Valuation]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Valuation</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Category</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Category]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Category</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Uses</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Uses]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Uses</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address 1</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address 1]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Address 1</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address 2</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address 2]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Address 2</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address 3</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address 3]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Address 3</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address 4</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address 4]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Address 4</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Address 5</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Address 5]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>Address 5</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_area</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[total_area]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>total_area</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_levels</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_levels]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>num_levels</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>min_level</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[min_level]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>min_level</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>max_level</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[max_level]</local-name>
+            <parent-name>[properties.csv]</parent-name>
+            <remote-alias>max_level</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Property Number</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Property Number (valoff_floors.csv)]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Property Number</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Level</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Level]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Level</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Floor Use</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Floor Use]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Floor Use</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Area</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Area]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Area</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Nav Per M2</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Nav Per M2]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Nav Per M2</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Nav</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Nav]</local-name>
+            <parent-name>[valoff_floors.csv]</parent-name>
+            <remote-alias>Nav</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Address 1]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Address 2]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Address 3]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Address 4]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Address 5]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Category]' role='dimension' type='nominal' />
+      <column datatype='string' name='[County]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column datatype='string' name='[Property Number (properties.csv)]' role='dimension' type='nominal' />
+      <column caption='Property Number (valoff floors.csv)' datatype='string' name='[Property Number (valoff_floors.csv)]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Property Number]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Uses]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Valuation]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='properties.csv' datatype='table' name='[__tableau_internal_object_id__].[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='property_locations.geojson' datatype='table' name='[__tableau_internal_object_id__].[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='valoff_floors.csv' datatype='table' name='[__tableau_internal_object_id__].[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]' role='measure' type='quantitative' />
+      <column caption='Max Level' datatype='string' name='[max_level]' role='dimension' type='nominal' />
+      <column caption='Min Level' datatype='integer' name='[min_level]' role='measure' type='quantitative' />
+      <column caption='Num Levels' datatype='integer' name='[num_levels]' role='measure' type='quantitative' />
+      <column caption='Total Area' datatype='real' name='[total_area]' role='measure' type='quantitative' />
+      <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Valuation]' derivation='None' name='[none:Valuation:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[total_area]' derivation='None' name='[none:total_area:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (Property Number (properties.csv))' hidden='true' name='[Action (Property Number (properties.csv))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Property Number (properties.csv)]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Property Number)' hidden='true' name='[Action (Property Number)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Property Number]' />
+        </groupfilter>
+      </group>
+      <group caption='Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number (properties.csv),Uses,Valuation,Total Area)' hidden='true' name='[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number (properties.csv),Uses,Valuation,Total Area)]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Address 1]' />
+          <groupfilter function='level-members' level='[Address 2]' />
+          <groupfilter function='level-members' level='[Address 3]' />
+          <groupfilter function='level-members' level='[Address 4]' />
+          <groupfilter function='level-members' level='[Address 5]' />
+          <groupfilter function='level-members' level='[Category]' />
+          <groupfilter function='level-members' level='[Property Number (properties.csv)]' />
+          <groupfilter function='level-members' level='[Uses]' />
+          <groupfilter function='level-members' level='[none:Valuation:ok]' />
+          <groupfilter function='level-members' level='[none:total_area:ok]' />
+        </groupfilter>
+      </group>
+      <group caption='Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number,Uses,Valuation,Total Area)' hidden='true' name='[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number,Uses,Valuation,Total Area)]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Address 1]' />
+          <groupfilter function='level-members' level='[Address 2]' />
+          <groupfilter function='level-members' level='[Address 3]' />
+          <groupfilter function='level-members' level='[Address 4]' />
+          <groupfilter function='level-members' level='[Address 5]' />
+          <groupfilter function='level-members' level='[Category]' />
+          <groupfilter function='level-members' level='[Property Number]' />
+          <groupfilter function='level-members' level='[Uses]' />
+          <groupfilter function='level-members' level='[none:Valuation:ok]' />
+          <groupfilter function='level-members' level='[none:total_area:ok]' />
+        </groupfilter>
+      </group>
+      <group caption='Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Uses,Valuation,Total Area)' hidden='true' name='[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Uses,Valuation,Total Area)]' name-style='unqualified' user:auto-column='sheet_link' user:ui-vit-column='true'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Address 1]' />
+          <groupfilter function='level-members' level='[Address 2]' />
+          <groupfilter function='level-members' level='[Address 3]' />
+          <groupfilter function='level-members' level='[Address 4]' />
+          <groupfilter function='level-members' level='[Address 5]' />
+          <groupfilter function='level-members' level='[Category]' />
+          <groupfilter function='level-members' level='[Uses]' />
+          <groupfilter function='level-members' level='[none:Valuation:ok]' />
+          <groupfilter function='level-members' level='[none:total_area:ok]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='en_US' class='hyper' dbname='C:/Tableau_Projects/CRR_Clustering/valoff_extract.hyper' default-settings='yes' schema='Extract' sslmode='' tablename='Extract' update-time='' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B' table='[Extract].[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+            <relation name='property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD' table='[Extract].[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]' type='table' />
+            <relation name='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B' table='[Extract].[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]' type='table' />
+            <relation name='valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22' table='[Extract].[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]' type='table' />
+          </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+          <cols>
+            <map key='[Address 1]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Address 1]' />
+            <map key='[Address 2]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Address 2]' />
+            <map key='[Address 3]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Address 3]' />
+            <map key='[Address 4]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Address 4]' />
+            <map key='[Address 5]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Address 5]' />
+            <map key='[Area]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Area]' />
+            <map key='[Category]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Category]' />
+            <map key='[County]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[County]' />
+            <map key='[Floor Use]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Floor Use]' />
+            <map key='[Geometry]' value='[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD].[Geometry]' />
+            <map key='[Level]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Level]' />
+            <map key='[Local Authority]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Local Authority]' />
+            <map key='[Nav Per M2]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Nav Per M2]' />
+            <map key='[Nav]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Nav]' />
+            <map key='[Property Number (properties.csv)]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Property Number]' />
+            <map key='[Property Number (valoff_floors.csv)]' value='[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22].[Property Number]' />
+            <map key='[Property Number]' value='[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD].[Property Number]' />
+            <map key='[Uses]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Uses]' />
+            <map key='[Valuation]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[Valuation]' />
+            <map key='[max_level]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[max_level]' />
+            <map key='[min_level]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[min_level]' />
+            <map key='[num_levels]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[num_levels]' />
+            <map key='[total_area]' value='[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B].[total_area]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Property Number</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Property Number]</local-name>
+              <parent-name>[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]</parent-name>
+              <remote-alias>Property Number</remote-alias>
+              <ordinal>0</ordinal>
+              <family>property_locations.geojson</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>96533</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Geometry</remote-name>
+              <remote-type>128</remote-type>
+              <local-name>[Geometry]</local-name>
+              <parent-name>[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]</parent-name>
+              <remote-alias>Geometry</remote-alias>
+              <ordinal>1</ordinal>
+              <family>property_locations.geojson</family>
+              <local-type>spatial</local-type>
+              <aggregation>Collect</aggregation>
+              <approx-count>42399</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Property Number</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Property Number (properties.csv)]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Property Number</remote-alias>
+              <ordinal>2</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>96538</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>County</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[County]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>County</remote-alias>
+              <ordinal>3</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>20</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Local Authority</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Local Authority]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Local Authority</remote-alias>
+              <ordinal>4</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>23</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Valuation</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Valuation]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Valuation</remote-alias>
+              <ordinal>5</ordinal>
+              <family>properties.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8674</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Category</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Category]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Category</remote-alias>
+              <ordinal>6</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>17</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Uses</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Uses]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Uses</remote-alias>
+              <ordinal>7</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>940</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Address 1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Address 1]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Address 1</remote-alias>
+              <ordinal>8</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>23359</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Address 2</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Address 2]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Address 2</remote-alias>
+              <ordinal>9</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>9579</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Address 3</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Address 3]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Address 3</remote-alias>
+              <ordinal>10</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2622</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Address 4</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Address 4]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Address 4</remote-alias>
+              <ordinal>11</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>969</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Address 5</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Address 5]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>Address 5</remote-alias>
+              <ordinal>12</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>251</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_area</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[total_area]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>total_area</remote-alias>
+              <ordinal>13</ordinal>
+              <family>properties.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>33121</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_levels</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[num_levels]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>num_levels</remote-alias>
+              <ordinal>14</ordinal>
+              <family>properties.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>min_level</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[min_level]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>min_level</remote-alias>
+              <ordinal>15</ordinal>
+              <family>properties.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>14</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>max_level</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[max_level]</local-name>
+              <parent-name>[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]</parent-name>
+              <remote-alias>max_level</remote-alias>
+              <ordinal>16</ordinal>
+              <family>properties.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Property Number</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Property Number (valoff_floors.csv)]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Property Number</remote-alias>
+              <ordinal>17</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>111756</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Level</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Level]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Level</remote-alias>
+              <ordinal>18</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>16</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Floor Use</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Floor Use]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Floor Use</remote-alias>
+              <ordinal>19</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>327</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Area</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Area]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Area</remote-alias>
+              <ordinal>20</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>37490</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Nav Per M2</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Nav Per M2]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Nav Per M2</remote-alias>
+              <ordinal>21</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1722</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Nav</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[Nav]</local-name>
+              <parent-name>[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]</parent-name>
+              <remote-alias>Nav</remote-alias>
+              <ordinal>22</ordinal>
+              <family>valoff_floors.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>69836</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Category:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;NO CATEGORY SELECTED&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;CENTRAL VALUATION LIST&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;INDUSTRIAL USES&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;RETAIL (WAREHOUSE)&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;NON-LIST&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;LEISURE&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;CHECK CATEGORY&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;MINERALS&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;UTILITY&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;OFFICE&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;MISCELLANEOUS&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;FUEL/DEPOT&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;RETAIL (SHOPS)&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;HEALTH&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Ireland&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='properties.csv' id='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B'>
+            <properties context=''>
+              <relation connection='textscan.09vfz9e1muwpg31gad9yj02j4sng' name='properties.csv' table='[properties#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IE' separator=','>
+                  <column datatype='string' name='Property Number' ordinal='0' />
+                  <column datatype='string' name='County' ordinal='1' />
+                  <column datatype='string' name='Local Authority' ordinal='2' />
+                  <column datatype='integer' name='Valuation' ordinal='3' />
+                  <column datatype='string' name='Category' ordinal='4' />
+                  <column datatype='string' name='Uses' ordinal='5' />
+                  <column datatype='string' name='Address 1' ordinal='6' />
+                  <column datatype='string' name='Address 2' ordinal='7' />
+                  <column datatype='string' name='Address 3' ordinal='8' />
+                  <column datatype='string' name='Address 4' ordinal='9' />
+                  <column datatype='string' name='Address 5' ordinal='10' />
+                  <column datatype='real' name='total_area' ordinal='11' />
+                  <column datatype='integer' name='num_levels' ordinal='12' />
+                  <column datatype='integer' name='min_level' ordinal='13' />
+                  <column datatype='string' name='max_level' ordinal='14' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B' table='[Extract].[properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B]' type='table' />
+            </properties>
+          </object>
+          <object caption='property_locations.geojson' id='property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD'>
+            <properties context=''>
+              <relation connection='ogrdirect.08kpadr1dwt5de1dtiglj1lrjjvk' name='property_locations.geojson' table='[property_locations.geojson]' type='table'>
+                <columns>
+                  <column datatype='string' name='Property Number' ordinal='0' />
+                  <column datatype='spatial' name='Geometry' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD' table='[Extract].[property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD]' type='table' />
+            </properties>
+          </object>
+          <object caption='valoff_floors.csv' id='valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22'>
+            <properties context=''>
+              <relation connection='textscan.09vfz9e1muwpg31gad9yj02j4sng' name='valoff_floors.csv' table='[valoff_floors#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_IE' separator=','>
+                  <column datatype='string' name='Property Number' ordinal='0' />
+                  <column datatype='integer' name='Level' ordinal='1' />
+                  <column datatype='string' name='Floor Use' ordinal='2' />
+                  <column datatype='real' name='Area' ordinal='3' />
+                  <column datatype='real' name='Nav Per M2' ordinal='4' />
+                  <column datatype='real' name='Nav' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22' table='[Extract].[valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[Property Number]' />
+              <expression op='[Property Number (properties.csv)]' />
+            </expression>
+            <first-end-point guaranteed-value='true' object-id='property_locations.geojson_5C7A075051F84D2FA7DF2449639BCCFD' unique-key='true' />
+            <second-end-point object-id='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B' unique-key='true' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Property Number (properties.csv)]' />
+              <expression op='[Property Number (valoff_floors.csv)]' />
+            </expression>
+            <first-end-point guaranteed-value='true' object-id='properties.csv_0CA964CE7B374675B83DF1F2EA4FC82B' unique-key='true' />
+            <second-end-point guaranteed-value='true' object-id='valoff_floors.csv_C3B09F15E1CD493F8BAD9D66B02E7F22' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Property Filter' name='[Action2_4F34D37268AF486481CC638C90981A09]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Dashboard 1' type='sheet' />
+      <link caption='Property Filter' delimiter=',' escape='\' expression='tsl:Dashboard%201?%5Bfederated.0lod4mg0nu9d640zv38u80eloswi%5D.%5BProperty%20Number%5D~s0=&lt;[Property Number]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='target' value='Dashboard 1' />
+      </command>
+    </action>
+    <datasources>
+      <datasource caption='property_locations.geojson+ (Multiple Connections)' name='federated.0lod4mg0nu9d640zv38u80eloswi' />
+    </datasources>
+    <datasource-dependencies datasource='federated.0lod4mg0nu9d640zv38u80eloswi'>
+      <column datatype='string' name='[Property Number]' role='dimension' type='nominal' />
+    </datasource-dependencies>
+  </actions>
+  <worksheets>
+    <worksheet name='Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='property_locations.geojson+ (Multiple Connections)' name='federated.0lod4mg0nu9d640zv38u80eloswi' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0lod4mg0nu9d640zv38u80eloswi'>
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
+            <column datatype='spatial' name='[Geometry]' role='measure' type='nominal' />
+            <column datatype='string' name='[Property Number]' role='dimension' type='nominal' />
+            <column-instance column='[Geometry]' derivation='Collect' name='[clct:Geometry:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Property Number]' derivation='None' name='[none:Property Number:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0lod4mg0nu9d640zv38u80eloswi].[Action (Property Number)]'>
+            <groupfilter function='level-members' level='[Property Number]' user:ui-action-filter='[Action2_4F34D37268AF486481CC638C90981A09]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0lod4mg0nu9d640zv38u80eloswi].[Action (Property Number)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[Longitude (generated)]' field-type='quantitative' max='-532072.73102686252' min='-993244.29925021471' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[Latitude (generated)]' field-type='quantitative' max='7359099.3708035592' min='6850472.1356730238' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map-layer'>
+            <format attr='enabled' id='b01002_001e' value='false' />
+            <format attr='enabled' id='b01002_002e' value='false' />
+            <format attr='enabled' id='b01002_003e' value='false' />
+            <format attr='enabled' id='dp02_0001e' value='false' />
+            <format attr='enabled' id='dp02_0015e' value='false' />
+            <format attr='enabled' id='dp03_0027e_plus_dp03_0029e' value='false' />
+            <format attr='enabled' id='dp03_0028e' value='false' />
+            <format attr='enabled' id='dp03_0030e_plus_dp03_0031e' value='false' />
+            <format attr='enabled' id='dp03_0062e' value='false' />
+            <format attr='enabled' id='dp03_0088e' value='false' />
+            <format attr='enabled' id='dp04_0001e' value='false' />
+            <format attr='enabled' id='dp04_0046e' value='false' />
+            <format attr='enabled' id='dp04_0047e' value='false' />
+            <format attr='enabled' id='dp04_0089e' value='false' />
+            <format attr='enabled' id='dp05_0001e' value='false' />
+            <format attr='enabled' id='dp05_0002e_div_dp05_0003e' value='false' />
+            <format attr='enabled' id='dp05_0032e' value='false' />
+            <format attr='enabled' id='dp05_0033e' value='false' />
+            <format attr='enabled' id='dp05_0034e' value='false' />
+            <format attr='enabled' id='dp05_0039e' value='false' />
+            <format attr='enabled' id='dp05_0047e' value='false' />
+            <format attr='enabled' id='dp05_0053e' value='false' />
+            <format attr='enabled' id='dp05_0066e' value='false' />
+            <format attr='enabled' id='dp05_0077e' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+            <format attr='map-style' value='streets' />
+          </style-rule>
+          <style-rule element='map-data-layer'>
+            <format attr='palette' value='tableau-map-blue-green-light' />
+            <format attr='geo-area-type' value='State' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[clct:Geometry:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Property Number:nk]' />
+              <geometry column='[federated.0lod4mg0nu9d640zv38u80eloswi].[clct:Geometry:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='0.0099999997764825821' />
+                <format attr='has-stroke' value='false' />
+                <format attr='has-halo' value='false' />
+                <format attr='mark-transparency' value='96' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0lod4mg0nu9d640zv38u80eloswi].[Latitude (generated)]</rows>
+        <cols>[federated.0lod4mg0nu9d640zv38u80eloswi].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{0DFE84AD-4C9A-4DF9-85CD-5580F57BBDA4}' />
+    </worksheet>
+    <worksheet name='Valuation vs Total Area'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='property_locations.geojson+ (Multiple Connections)' name='federated.0lod4mg0nu9d640zv38u80eloswi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0lod4mg0nu9d640zv38u80eloswi'>
+            <column datatype='string' name='[Address 1]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 2]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 3]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 4]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 5]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Property Number]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Uses]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Valuation]' role='measure' type='quantitative' />
+            <column-instance column='[Address 1]' derivation='None' name='[none:Address 1:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Address 2]' derivation='None' name='[none:Address 2:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Address 3]' derivation='None' name='[none:Address 3:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Address 4]' derivation='None' name='[none:Address 4:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Address 5]' derivation='None' name='[none:Address 5:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Category]' derivation='None' name='[none:Category:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Property Number]' derivation='None' name='[none:Property Number:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Uses]' derivation='None' name='[none:Uses:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Valuation]' derivation='None' name='[none:Valuation:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[total_area]' derivation='None' name='[none:total_area:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Area' datatype='real' name='[total_area]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Valuation:qk]' field-type='quantitative' scale='log' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:total_area:qk]' field-type='quantitative' scale='log' scope='cols' type='space' />
+            <format attr='title' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:total_area:qk]' scope='cols' value='Total Area (log10)' />
+            <format attr='title' class='0' field='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Valuation:qk]' scope='rows' value='Valuation (log10)' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 1:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 2:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 3:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 4:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 5:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Uses:nk]' />
+              <lod column='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Property Number:nk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run><![CDATA[<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 1:nk]>,
+<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 2:nk]>,
+<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 3:nk]>,
+<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 4:nk]>,
+<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Address 5:nk]>
+]]></run>
+                <run fontcolor='#787878'>Category:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Total Area:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:total_area:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>Valuation:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Valuation:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run bold='true'><![CDATA[<Sheet name="tt_Floors" maxwidth="500" maxheight="500" filter="<All Fields>">]]></run>
+                <run>Æ&#10;</run>
+              </formatted-text>
+            </customized-tooltip>
+            <style>
+              <style-rule element='mark'>
+                <format attr='shape' value=':filled/circle' />
+                <format attr='size' value='0.33983424305915833' />
+                <format attr='mark-transparency' value='70' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Valuation:qk]</rows>
+        <cols>[federated.0lod4mg0nu9d640zv38u80eloswi].[none:total_area:qk]</cols>
+      </table>
+      <simple-id uuid='{FCDBD402-0E10-4023-8E5D-51B253500A28}' />
+    </worksheet>
+    <worksheet name='tt_Floors'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='property_locations.geojson+ (Multiple Connections)' name='federated.0lod4mg0nu9d640zv38u80eloswi' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0lod4mg0nu9d640zv38u80eloswi'>
+            <column datatype='string' name='[Address 1]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 2]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 3]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 4]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Address 5]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Area]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Category]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Floor Use]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Level]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Nav Per M2]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Nav]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Property Number (properties.csv)]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Property Number]' role='dimension' type='nominal' />
+            <column datatype='string' name='[Uses]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Valuation]' role='measure' type='quantitative' />
+            <column-instance column='[Area]' derivation='None' name='[none:Area:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Floor Use]' derivation='None' name='[none:Floor Use:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Level]' derivation='None' name='[none:Level:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Nav Per M2]' derivation='None' name='[none:Nav Per M2:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Nav]' derivation='None' name='[none:Nav:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Valuation]' derivation='None' name='[none:Valuation:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[total_area]' derivation='None' name='[none:total_area:ok]' pivot='key' type='ordinal' />
+            <column caption='Total Area' datatype='real' name='[total_area]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number (properties.csv),Uses,Valuation,Total Area)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action - tt_Floors]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Address 1]' />
+              <groupfilter function='level-members' level='[Address 2]' />
+              <groupfilter function='level-members' level='[Address 3]' />
+              <groupfilter function='level-members' level='[Address 4]' />
+              <groupfilter function='level-members' level='[Address 5]' />
+              <groupfilter function='level-members' level='[Category]' />
+              <groupfilter function='level-members' level='[Property Number (properties.csv)]' />
+              <groupfilter function='level-members' level='[Uses]' />
+              <groupfilter function='level-members' level='[none:Valuation:ok]' />
+              <groupfilter function='level-members' level='[none:total_area:ok]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number,Uses,Valuation,Total Area)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action - tt_Floors]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[Address 1]' member='&quot;FLOOR 0&quot;' />
+              <groupfilter function='crossjoin'>
+                <groupfilter function='member' level='[Address 2]' member='&quot;01XC GARYOWEN MALL EXT&quot;' />
+                <groupfilter function='crossjoin'>
+                  <groupfilter function='member' level='[Address 3]' member='&quot;CRESCENT SHOPPING CENTRE&quot;' />
+                  <groupfilter function='crossjoin'>
+                    <groupfilter function='member' level='[Address 4]' member='&quot;DOORADOYLE ROAD&quot;' />
+                    <groupfilter function='crossjoin'>
+                      <groupfilter function='member' level='[Address 5]' member='&quot;LIMERICK&quot;' />
+                      <groupfilter function='crossjoin'>
+                        <groupfilter function='member' level='[Category]' member='&quot;RETAIL (SHOPS)&quot;' />
+                        <groupfilter function='crossjoin'>
+                          <groupfilter function='member' level='[Property Number]' member='&quot;2213141&quot;' />
+                          <groupfilter function='crossjoin'>
+                            <groupfilter function='member' level='[Uses]' member='&quot;KIOSK, -&quot;' />
+                            <groupfilter function='crossjoin'>
+                              <groupfilter function='member' level='[none:Valuation:ok]' member='25100' />
+                              <groupfilter function='member' level='[none:total_area:ok]' member='12.56' />
+                            </groupfilter>
+                          </groupfilter>
+                        </groupfilter>
+                      </groupfilter>
+                    </groupfilter>
+                  </groupfilter>
+                </groupfilter>
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Uses,Valuation,Total Area)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action - tt_Floors]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Address 1]' />
+              <groupfilter function='level-members' level='[Address 2]' />
+              <groupfilter function='level-members' level='[Address 3]' />
+              <groupfilter function='level-members' level='[Address 4]' />
+              <groupfilter function='level-members' level='[Address 5]' />
+              <groupfilter function='level-members' level='[Category]' />
+              <groupfilter function='level-members' level='[Uses]' />
+              <groupfilter function='level-members' level='[none:Valuation:ok]' />
+              <groupfilter function='level-members' level='[none:total_area:ok]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Uses,Valuation,Total Area)]</column>
+            <column>[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number (properties.csv),Uses,Valuation,Total Area)]</column>
+            <column>[federated.0lod4mg0nu9d640zv38u80eloswi].[Tooltip (Address 1,Address 2,Address 3,Address 4,Address 5,Category,Property Number,Uses,Valuation,Total Area)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' value='5' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0lod4mg0nu9d640zv38u80eloswi].[none:Floor Use:nk] / ([federated.0lod4mg0nu9d640zv38u80eloswi].[none:Level:ok] / ([federated.0lod4mg0nu9d640zv38u80eloswi].[none:Area:ok] / ([federated.0lod4mg0nu9d640zv38u80eloswi].[none:Nav Per M2:ok] / [federated.0lod4mg0nu9d640zv38u80eloswi].[none:Nav:ok]))))</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{4557ABCC-07E7-4D2C-918A-9F4CDAF3686C}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size sizing-mode='automatic' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98230' id='7' param='horz' w='99064' x='468' y='885'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98230' id='5' w='89702' x='468' y='885'>
+              <zone h='98230' id='3' name='Map' w='44851' x='468' y='885'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='98230' id='9' name='Valuation vs Total Area' w='44851' x='45319' y='885'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='98230' id='6' is-fixed='true' param='vert' w='9362' x='90170' y='885'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='33850' id='8' name='Map' pane-specification-id='0' param='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' w='9362' x='90170' y='885'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='15' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98230' id='14' param='vert' w='99064' x='468' y='885'>
+                <zone fixed-size='280' h='98230' id='3' is-fixed='true' name='Map' w='44851' x='468' y='885'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='33850' id='8' name='Map' pane-specification-id='0' param='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' w='9362' x='90170' y='885'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='98230' id='9' is-fixed='true' name='Valuation vs Total Area' w='44851' x='45319' y='885'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{873E1AC3-2ACE-4737-93A8-F2F4F6903E0B}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='300'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E763A6C4-059E-4CCB-B739-3D983DA8CC7F}' />
+    </window>
+    <window class='worksheet' name='Valuation vs Total Area'>
+      <cards>
+        <edge name='left'>
+          <strip size='242'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0lod4mg0nu9d640zv38u80eloswi].[none:Category:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7226181A-66AA-48B4-81F5-C621967A4D8F}' />
+    </window>
+    <window class='worksheet' name='tt_Floors'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{32DB55A8-82B7-4D28-9F64-3107FD0AC945}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Map'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Valuation vs Total Area'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='9' />
+      <simple-id uuid='{8455A62B-562A-4C49-97C8-66199E9DB0E2}' />
+    </window>
+  </windows>
+</workbook>
